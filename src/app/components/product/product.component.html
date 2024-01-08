@@ -1,0 +1,33 @@
+<div class="card" style="width: 18rem">
+  <img
+    [src]="product.medium[0].image"
+    [alt]="product.title"
+    class="rounded border-bottom mx-2"
+  />
+  <div class="flex">
+    <ng-container *ngFor="let smallImage of product.small; let i = index">
+      <img
+        [src]="smallImage.image"
+        class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+        alt=""
+      />
+    </ng-container>
+  </div>
+  <div class="card-body">
+    <small class="fw-6">{{ product.store | uppercase }}</small>
+    <h6 class="card-title">{{ product.title }}</h6>
+    <span>{{ product.brand }}</span>
+    <p>Disponibilidad: {{ product.stock_quantity }}</p>
+    <h4 class="">
+      {{ product.regular_price | currency : "Bs. " }}
+      <span class="fw-6 text-body-tertiary"
+        >(<small>Bs x $ {{ product.factor }}</small>)</span
+      >
+    </h4>
+    <h5 class="">{{ product.regular_usd | currency }}</h5>
+
+    <a href="#" class="btn btn-warning text-black fw-light"
+      >Agregar al carrito</a
+    >
+  </div>
+</div>
